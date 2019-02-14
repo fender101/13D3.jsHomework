@@ -32,11 +32,11 @@ d3.csv("assets/data/healthData.csv")
     // Step 2: Create scale functions
     // ==============================   
     var xLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(healthData, d => d.poverty)+5])
+      .domain([6, d3.max(healthData, d => d.poverty)+5])
       .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(healthData, d => d.smokes)+5])
+      .domain([6, d3.max(healthData, d => d.smokes)+5])
       .range([height, 0]);
 
     // Step 3: Create axis functions
@@ -64,7 +64,10 @@ d3.csv("assets/data/healthData.csv")
     .attr("r", "7")
     .attr("fill", "black")
     .attr("opacity", ".9");
-    
+
+    var stateAbbr = chartGroup.selectAll("text")
+        .attr("class", "labels")
+        .text(function(d) {return d.abbr});
 
     // Step 6: Initialize tool tip
     // ==============================
