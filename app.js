@@ -55,7 +55,7 @@ d3.csv("assets/data/healthData.csv")
 
     // Step 5: Create Circles
     // ==============================
-    var circlesGroup = chartGroup.selectAll("circle")
+    var circlesGroup = chartGroup.selectAll("stateCircle")
     .data(healthData)
     .enter()
     .append("circle")
@@ -84,7 +84,7 @@ d3.csv("assets/data/healthData.csv")
 
     // Step 8: Create event listeners to display and hide the tooltip
     // ==============================
-    circlesGroup.on("click", "d3-tip.n", function(data) {
+    circlesGroup.on("click", "d3-tip", function(data) {
       toolTip.show(data, this);
     })
       // onmouseout event
