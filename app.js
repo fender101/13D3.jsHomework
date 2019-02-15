@@ -33,11 +33,11 @@ d3.csv("assets/data/healthData.csv")
     // ==============================   
     var xLinearScale = d3.scaleLinear()
       .domain([0, d3.max(healthData, d => d.poverty)+5])
-      .range([6, width]);
+      .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-      .domain([6, d3.max(healthData, d => d.smokes)+5])
-      .range([height, 6]);
+      .domain([0, d3.max(healthData, d => d.smokes)+5])
+      .range([height, 0]);
 
     // Step 3: Create axis functions
     // ==============================
@@ -84,7 +84,7 @@ d3.csv("assets/data/healthData.csv")
 
     // Step 8: Create event listeners to display and hide the tooltip
     // ==============================
-    circlesGroup.on("click", function(data) {
+    circlesGroup.on("click", "d3-tip", function(data) {
       toolTip.show(data, this);
     })
       // onmouseout event
